@@ -9,6 +9,10 @@
     <license>MIT</license>
     <keywords>cordova,interfaceBridge</keywords>
 
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
     <js-module src="www/interfaceBridge.js" name="interfaceBridge">
             <clobbers target="interfaceBridge" />
         </js-module>
