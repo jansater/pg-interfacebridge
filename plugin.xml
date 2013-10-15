@@ -2,11 +2,11 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="se.rapidsolutions.interfacebridge"
-      version="0.1">
+      version="1.0.0">
 
     <name>InterfaceBridge</name>
     <description>Control native ui elements with javascript</description>
-    <license></license>
+    <license>MIT</license>
     <keywords>cordova,interfaceBridge</keywords>
 
     <js-module src="www/interfaceBridge.js" name="interfaceBridge">
