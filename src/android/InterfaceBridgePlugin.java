@@ -1,4 +1,4 @@
-package se.rf.idrottonline.group;
+package se.rapidsolutions;
 
 import java.util.HashMap;
 
