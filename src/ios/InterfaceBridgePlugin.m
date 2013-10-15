@@ -25,6 +25,7 @@
 
 #import "InterfaceBridgePlugin.h"
 #import "ApplicationMessage.h"
+#import <Cordova/CDVJSON.h>
 
 
 @implementation InterfaceBridgePlugin 
@@ -71,14 +72,17 @@ NSMutableDictionary *_callbackTable;
     self = (InterfaceBridgePlugin*)[super initWithWebView:theWebView];
     if (self) {
         _callbackTable = [[NSMutableDictionary alloc] init];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMessageReceived:) name:@"InterfaceCallback" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMessageReceived:) name:@"InterfaceCallback" object:nil];
     }
     return self;
 }
 
-- (void)Show:(NSMutableArray *)arguments
-          withDict:(NSMutableDictionary *)options {
-    NSString* callbackId = [arguments objectAtIndex:0];
+- (void)Show:(CDVInvokedUrlCommand*)command {
+    
+    id options = [command.arguments objectAtIndex:0];
+
+    
+    NSString* callbackId = command.callbackId;
     NSString* element = [options objectForKey: @"element"];
     NSString* text = [options objectForKey: @"text"];
     //NSString* keepOpen = [options objectForKey: @"keepOpen"];
@@ -105,10 +109,12 @@ NSMutableDictionary *_callbackTable;
     
 }
 
-- (void)Disable:(NSMutableArray *)arguments
-          withDict:(NSMutableDictionary *)options {
+- (void)Disable:(CDVInvokedUrlCommand*)command {
+        
+    id options = [command.arguments objectAtIndex:0];
+    
     NSLog(@"interface disable:%@\n withDict:%@", [arguments description], [options description]);
-    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* callbackId = command.callbackId;
     NSString* element = [options objectForKey: @"element"];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -123,9 +129,11 @@ NSMutableDictionary *_callbackTable;
     
 }
 
-- (void)Hide:(NSMutableArray *)arguments
-      withDict:(NSMutableDictionary *)options {
-    NSString* callbackId = [arguments objectAtIndex:0];
+- (void)Hide:(CDVInvokedUrlCommand*)command {
+    
+    id options = [command.arguments objectAtIndex:0];
+    
+    NSString* callbackId = command.callbackId;
     NSString* element = [options objectForKey: @"element"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"Hide" forKey:@"Action"];

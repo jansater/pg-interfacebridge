@@ -29,8 +29,8 @@
 @interface InterfaceBridgePlugin : CDVPlugin {
     
 }
-- (void)Show:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
-- (void)Disable:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
-- (void)Hide:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void)Show:(CDVInvokedUrlCommand*)command;
+- (void)Disable:(CDVInvokedUrlCommand*)command;
+- (void)Hide:(CDVInvokedUrlCommand*)command;
 
 @end
