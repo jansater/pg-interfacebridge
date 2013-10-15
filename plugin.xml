@@ -9,48 +9,37 @@
     <license></license>
     <keywords>cordova,interfaceBridge</keywords>
 
-    <engines>
-        <engine name="cordova" version=">=3.0.0" />
-    </engines>
+    <js-module src="www/interfaceBridge.js" name="interfaceBridge">
+            <clobbers target="interfaceBridge" />
+        </js-module>
 
     <!-- ios -->
     <platform name="ios">
 
         <config-file target="config.xml" parent="/*">
-		<feature name="interfaceBridge">
-			<param name="ios-package" value="InterfaceBridgePlugin"/>
-		</feature>
+    		<feature name="interfaceBridge">
+    			<param name="ios-package" value="InterfaceBridgePlugin"/>
+    		</feature>
         </config-file>
 
-        <js-module src="www/interfaceBridge.js" name="interfaceBridge">
-            <clobbers target="interfaceBridge" />
-        </js-module>
-
-	<header-file src="src/ios/InterfaceBridgePlugin.h" />
-	<source-file src="src/ios/InterfaceBridgePlugin.m" />
-    <header-file src="src/ios/InterfaceBridge.h" />
-    <source-file src="src/ios/InterfaceBridge.m" />
+    	<header-file src="src/ios/InterfaceBridgePlugin.h" />
+    	<source-file src="src/ios/InterfaceBridgePlugin.m" />
+        <header-file src="src/ios/InterfaceBridge.h" />
+        <source-file src="src/ios/InterfaceBridge.m" />
 
     </platform>
 
-    <!-- android
+
+    <!-- android -->
     <platform name="android">
-        <config-file target="config.xml" parent="/*">
-            <feature name="Console">
-                <param name="wp-package" value="DebugConsole"/>
+         <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Battery" >
+                <param name="android-package" value="org.apache.cordova.batterystatus.BatteryListener"/>
             </feature>
         </config-file>
 
-        <js-module src="www/console-via-logger.js" name="console">
-            <clobbers target="console" />
-        </js-module>
-
-        <js-module src="www/logger.js" name="logger">
-            <clobbers target="cordova.logger" />
-        </js-module>
-
-        <source-file src="src/wp/DebugConsole.cs" />
-    </platform> -->
+        <source-file src="src/android/InterfaceBridgePlugin.java" target-dir="src/se/rapidsolutions" />
+    </platform> 
 
 
 </plugin>
