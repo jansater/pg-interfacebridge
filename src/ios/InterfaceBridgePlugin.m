@@ -113,7 +113,6 @@ NSMutableDictionary *_callbackTable;
         
     id options = [command.arguments objectAtIndex:0];
     
-    NSLog(@"interface disable:%@\n withDict:%@", [arguments description], [options description]);
     NSString* callbackId = command.callbackId;
     NSString* element = [options objectForKey: @"element"];
     
