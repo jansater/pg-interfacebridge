@@ -1,4 +1,7 @@
 
+var cordova = require('cordova'),
+    exec = require('cordova/exec');
+
 var InterfaceBridge = function() {
     
 }
@@ -11,13 +14,13 @@ InterfaceBridge.prototype.show = function (element, text, keepOpen, successCallb
     keepOpen: keepOpen
     };
         
-    var success = function (msg) {
+    /*var success = function (msg) {
         //var event = JSON.parse(msg);
         successCallback(msg);
-    };
+    };*/
 
-    return cordova.exec(
-            success,
+    return exec(
+            successCallback,
             failureCallback,
             'interfaceBridge',
             'Show',
@@ -30,7 +33,7 @@ InterfaceBridge.prototype.hide = function (element, successCallback, failureCall
     element: element,
     };
     
-    return cordova.exec(
+    return exec(
             successCallback,
             failureCallback,
             'interfaceBridge',
@@ -43,7 +46,7 @@ InterfaceBridge.prototype.disable = function (element, successCallback, failureC
     element: element,
     };
     
-    return cordova.exec(
+    return exec(
             successCallback,
             failureCallback,
             'interfaceBridge',
@@ -51,7 +54,7 @@ InterfaceBridge.prototype.disable = function (element, successCallback, failureC
             [options]);
 };
 
-
-module.exports = new InterfaceBridge();
+var interfaceBridge = new InterfaceBridge();
+module.exports = interfaceBridge;
 
 
